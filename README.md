@@ -33,7 +33,7 @@ Siga os passos abaixo para rodar a aplicação localmente.
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/alvaroajs/back_PTCI ```
+    git clone https://github.com/alvaroajs/back_PTCI 
 
 2.  **Instale as dependências:**
     ```bash
