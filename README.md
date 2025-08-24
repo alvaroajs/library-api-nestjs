@@ -4,12 +4,12 @@ Esta é uma API REST desenvolvida em NestJS como parte de um teste técnico. O o
 
 ## ✨ Features
 
-- [cite_start]✅ **Gerenciamento de Livros**: Cadastro [cite: 2][cite_start], listagem (com filtros por status e título)  [cite_start]e atualização de status (`Disponível`/`Emprestado`).
-- [cite_start]✅ **Gerenciamento de Usuários**: Cadastro de novos usuários.
-- [cite_start]✅ **Sistema de Empréstimos**: Registro de empréstimos  [cite_start]e devoluções.
-- [cite_start]✅ **Validação de Dados**: Uso de DTOs com `class-validator` para garantir a integridade dos dados de entrada.
-- [cite_start]✅ **Estrutura Modular**: Código organizado em módulos para cada entidade (`books`, `users`, `loans`).
-- [cite_start]✅ **Testes Unitários**: Testes com Jest para a lógica de negócio principal, garantindo que regras como "não emprestar um livro já emprestado" sejam respeitadas.
+- ✅ **Gerenciamento de Livros**: Cadastro, listagem (com filtros por status e título) e atualização de status (`Disponível`/`Emprestado`).
+- ✅ **Gerenciamento de Usuários**: Cadastro de novos usuários.
+- ✅ **Sistema de Empréstimos**: Registro de empréstimos e devoluções.
+- ✅ **Validação de Dados**: Uso de DTOs com `class-validator` para garantir a integridade dos dados de entrada.
+- ✅ **Estrutura Modular**: Código organizado em módulos para cada entidade (`books`, `users`, `loans`).
+- ✅ **Testes Unitários**: Testes com Jest para a lógica de negócio principal, garantindo que regras como "não emprestar um livro já emprestado" sejam respeitadas.
 
 ## 🛠️ Tecnologias Utilizadas
 
