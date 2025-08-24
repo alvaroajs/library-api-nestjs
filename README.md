@@ -4,7 +4,7 @@ Esta é uma API REST desenvolvida em NestJS como parte de um teste técnico. O o
 
 ## ✨ Features
 
-- ✅ **Gerenciamento de Livros**: Cadastro, listagem (com filtros por status e título) e atualização de status (`Disponível`/`Emprestado`).
+- ✅ **Gerenciamento de Livros**: Cadastro, listagem (com filtros por status e título) e atualização de status (`BORROWED (Emprestado)` e `AVAILABLE (Disponível)`).
 - ✅ **Gerenciamento de Usuários**: Cadastro de novos usuários.
 - ✅ **Sistema de Empréstimos**: Registro de empréstimos e devoluções.
 - ✅ **Validação de Dados**: Uso de DTOs com `class-validator` para garantir a integridade dos dados de entrada.
