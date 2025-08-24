@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Patch, Param } from '@nestjs/common'; // Garanta que Patch e Param estão importados
+import { Controller, Post, Body, Patch, Param } from '@nestjs/common'; 
 import { LoansService } from './loans.service';
 import { CreateLoanDto } from './dto/create-loan.dto';
 

@@ -10,7 +10,7 @@ import { CreateLoanDto } from './dto/create-loan.dto';
 export class LoansService {
   constructor(private prisma: PrismaService) {}
 
-  // --- MÉTODO PARA CRIAR UM EMPRÉSTIMO ---
+  //metodo de criação de emprestimo
   async create(createLoanDto: CreateLoanDto) {
     const { bookId, userId } = createLoanDto;
 
@@ -27,8 +27,6 @@ export class LoansService {
     if (book.status === 'BORROWED') {
       throw new ConflictException('Este livro já está emprestado.');
     }
-
-    // A transação garante que as duas operações aconteçam juntas
     return this.prisma.$transaction(async (tx) => {
       await tx.book.update({
         where: { id: bookId },
@@ -46,7 +44,7 @@ export class LoansService {
     });
   }
 
-  // --- MÉTODO PARA DEVOLVER UM LIVRO ---
+  // metodo para devolver um livro
   async returnBook(id: number) {
     const loan = await this.prisma.loan.findUnique({
       where: { id },
@@ -61,13 +59,12 @@ export class LoansService {
     }
 
     return this.prisma.$transaction(async (tx) => {
-      // Atualiza o status do livro para AVAILABLE
+      
       await tx.book.update({
         where: { id: loan.bookId },
         data: { status: 'AVAILABLE' },
       });
 
-      // Atualiza o empréstimo com a data de devolução
       const updatedLoan = await tx.loan.update({
         where: { id },
         data: { returnDate: new Date() },
