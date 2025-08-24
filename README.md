@@ -60,12 +60,26 @@ Siga os passos abaixo para rodar a aplicação localmente.
     ```
     - O servidor estará rodando em `http://localhost:3000`.
 
-### Rodando os Testes Unitários
+## 🧪 Testes
 
-Para executar os testes automatizados, use o comando:
+A aplicação conta com dois tipos de testes para garantir sua qualidade e funcionamento.
+
+### Testes Unitários (Jest)
+
+Foram criados testes unitários com Jest para a lógica de negócio mais crítica do sistema (no `LoansService`), garantindo que as regras de empréstimo são seguidas e os erros são tratados corretamente. Para executar os testes automatizados, use o comando:
+
 ```bash
 npm run test
 ```
+
+### Testes Manuais (Postman)
+
+Todos os endpoints da API foram validados manualmente utilizando o [Postman](https://www.postman.com/) para simular o uso real da aplicação. Os testes manuais cobriram:
+
+- O fluxo completo de CRUD para cada entidade (`users`, `books`, `loans`).
+- Os filtros de busca por título e status na listagem de livros.
+- As validações de erro, como tentar cadastrar um e-mail duplicado ou emprestar um livro já emprestado (erros `409 Conflict`).
+- O ciclo completo de um empréstimo: criação, verificação de status e devolução.
 
 ## 📖 Endpoints da API
 
