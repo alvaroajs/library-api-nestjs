@@ -37,7 +37,7 @@ Toda a lógica de negócio e a comunicação com o banco de dados estão isolada
 
 ### DTOs e Validação na Camada de Entrada
 
-[cite_start]Para garantir a integridade dos dados que chegam à API, foram utilizados Data Transfer Objects (DTOs) em conjunto com as bibliotecas `class-validator` e `class-transformer`[cite: 25]. Através de um `ValidationPipe` global, o NestJS valida automaticamente todos os corpos de requisição, rejeitando dados malformados ou inválidos antes mesmo de chegarem à lógica de negócio, tornando a aplicação mais robusta e segura.
+[cite_start]Para garantir a integridade dos dados que chegam à API, foram utilizados Data Transfer Objects (DTOs) em conjunto com as bibliotecas `class-validator` e `class-transformer`. Através de um `ValidationPipe` global, o NestJS valida automaticamente todos os corpos de requisição, rejeitando dados malformados ou inválidos antes mesmo de chegarem à lógica de negócio, tornando a aplicação mais robusta e segura.
 
 ### Transações para Consistência de Dados
 
