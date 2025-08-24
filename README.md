@@ -93,9 +93,3 @@ Aqui está um resumo dos endpoints disponíveis:
 | `PATCH`| `/books/:id/status`    | Atualiza o status de um livro (`AVAILABLE` ou `BORROWED`). |
 | `POST` | `/loans`               | Registra um novo empréstimo.                      |
 | `PATCH`| `/loans/:id/return`    | Marca um empréstimo como devolvido.               |
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
-
----
