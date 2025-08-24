@@ -1,103 +1,101 @@
-<<<<<<< HEAD
-back_PTCI teste
+# API de Biblioteca Digital (Teste Técnico)
 
-=======
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Esta é uma API REST desenvolvida em NestJS como parte de um teste técnico. O objetivo é gerenciar uma pequena biblioteca digital, controlando o cadastro de livros, usuários e o fluxo de empréstimos e devoluções.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## ✨ Features
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- ✅ **Gerenciamento de Livros**: Cadastro, listagem (com filtros por status e título) e atualização de status (`Disponível`/`Emprestado`).
+- ✅ **Gerenciamento de Usuários**: Cadastro de novos usuários.
+- ✅ **Sistema de Empréstimos**: Registro de empréstimos e devoluções.
+- ✅ **Validação de Dados**: Uso de DTOs com `class-validator` para garantir a integridade dos dados de entrada.
+- ✅ **Estrutura Modular**: Código organizado em módulos para cada entidade (`books`, `users`, `loans`).
+- ✅ **Testes Unitários**: Testes com Jest para a lógica de negócio principal, garantindo que regras como "não emprestar um livro já emprestado" sejam respeitadas.
 
-## Description
+## 🛠️ Tecnologias Utilizadas
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Backend**: [NestJS](https://nestjs.com/)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Banco de Dados**: [PostgreSQL](https://www.postgresql.org/)
+- **Testes**: [Jest](https://jestjs.io/)
+- **Linguagem**: [TypeScript](https://www.typescriptlang.org/)
 
-## Project setup
+## 🚀 Como Executar o Projeto
+
+Siga os passos abaixo para rodar a aplicação localmente.
+
+### Pré-requisitos
+
+- [Node.js](https://nodejs.org/en/) (v16 ou superior)
+- [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
+- [Docker](https://www.docker.com/) (Opcional, mas recomendado para rodar o PostgreSQL) ou uma instância local do PostgreSQL.
+
+### Passo a Passo
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone https://github.com/alvaroajs/back_PTCI 
+
+2.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure as Variáveis de Ambiente:**
+    - Renomeie o arquivo `.env.example` para `.env`.
+    - Abra o arquivo `.env` e substitua a `DATABASE_URL` pela sua string de conexão do PostgreSQL.
+    ```env
+    # Exemplo de DATABASE_URL
+    DATABASE_URL="postgresql://SEU_USER:SUA_SENHA@localhost:5432/SUA_DATABASE?schema=public"
+    ```
+
+4.  **Execute as Migrations do Banco de Dados:**
+    - Este comando vai criar o schema do banco de dados baseado no arquivo `prisma/schema.prisma`.
+    ```bash
+    npx prisma migrate dev
+    ```
+
+5.  **Inicie a Aplicação:**
+    ```bash
+    npm run start:dev
+    ```
+    - O servidor estará rodando em `http://localhost:3000`.
+
+## 🧪 Testes
+
+A aplicação conta com dois tipos de testes para garantir sua qualidade e funcionamento.
+
+### Testes Unitários (Jest)
+
+Foram criados testes unitários com Jest para a lógica de negócio mais crítica do sistema (no `LoansService`), garantindo que as regras de empréstimo são seguidas e os erros são tratados corretamente. Para executar os testes automatizados, use o comando:
 
 ```bash
-$ npm install
+npm run test
 ```
 
-## Compile and run the project
+### Testes Manuais (Postman)
 
-```bash
-# development
-$ npm run start
+Todos os endpoints da API foram validados manualmente utilizando o [Postman](https://www.postman.com/) para simular o uso real da aplicação. Os testes manuais cobriram:
 
-# watch mode
-$ npm run start:dev
+- O fluxo completo de CRUD para cada entidade (`users`, `books`, `loans`).
+- Os filtros de busca por título e status na listagem de livros.
+- As validações de erro, como tentar cadastrar um e-mail duplicado ou emprestar um livro já emprestado (erros `409 Conflict`).
+- O ciclo completo de um empréstimo: criação, verificação de status e devolução.
 
-# production mode
-$ npm run start:prod
-```
+## 📖 Endpoints da API
 
-## Run tests
+Aqui está um resumo dos endpoints disponíveis:
 
-```bash
-# unit tests
-$ npm run test
+| Método | Rota                   | Descrição                                         |
+| :----- | :--------------------- | :------------------------------------------------ |
+| `POST` | `/users`               | Cadastra um novo usuário.                         |
+| `POST` | `/books`               | Cadastra um novo livro.                           |
+| `GET`  | `/books`               | Lista todos os livros. Aceita filtros `?status=` e `?title=`. |
+| `PATCH`| `/books/:id/status`    | Atualiza o status de um livro (`AVAILABLE` ou `BORROWED`). |
+| `POST` | `/loans`               | Registra um novo empréstimo.                      |
+| `PATCH`| `/loans/:id/return`    | Marca um empréstimo como devolvido.               |
 
-# e2e tests
-$ npm run test:e2e
+## 📄 Licença
 
-# test coverage
-$ npm run test:cov
-```
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
->>>>>>> 4fabd90 (feat: Configuração inicial do NestJS e Prisma)
+---
