@@ -1,20 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
 model Book {
+
   id            Int      @id @default(autoincrement())
   title         String
   author        String
   publishedYear Int
   status        Status   @default(AVAILABLE)
   loans         Loan[]
+
 }
 
+
 model User {
+
   id    Int    @id @default(autoincrement())
   name  String
   email String @unique
   loans Loan[]
+
+}
+
+
+//onde colocamos os livros já emprestados
+model Loan {
+
+  id         Int      @id @default(autoincrement())
+  bookId     Int
+  userId     Int
+  loanDate   DateTime @default(now())
+  returnDate DateTime? // O '?' indica que este campo pode ser nulo
+
+  book Book @relation(fields: [bookId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
 }
 
 enum Status {
+
   AVAILABLE
   BORROWED
-}
+
+} 
