@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Patch, Param } from '@nestjs/common'; // Garanta que Patch e Param estão importados
 import { LoansService } from './loans.service';
 import { CreateLoanDto } from './dto/create-loan.dto';
 
@@ -6,8 +6,13 @@ import { CreateLoanDto } from './dto/create-loan.dto';
 export class LoansController {
   constructor(private readonly loansService: LoansService) {}
 
-  @Post() // 
+  @Post()
   create(@Body() createLoanDto: CreateLoanDto) {
     return this.loansService.create(createLoanDto);
+  }
+
+  @Patch(':id/return')
+  returnBook(@Param('id') id: string) {
+    return this.loansService.returnBook(+id);
   }
 }
