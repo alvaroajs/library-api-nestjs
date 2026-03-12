@@ -8,8 +8,7 @@ import { UpdateBookStatusDto } from './dto/update-book-status.dto';
 export class BooksService {
   constructor(private prisma: PrismaService) {}
 
-  create(createBookDto: CreateBookDto) {
-    console.log('Estou dentro do método create correto!'); 
+  create(createBookDto: CreateBookDto) { 
     return this.prisma.book.create({
       data: createBookDto,
 
